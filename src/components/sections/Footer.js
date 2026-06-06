@@ -368,7 +368,6 @@ export default function Footer() {
           <BrandCol>
             <BrandRow>
               <LogoImg src="/ahk-logo.png" alt="AHK Logo" />
-              <BrandName>{t('footer.brand')}</BrandName>
             </BrandRow>
             <BrandDesc>{t('footer.brandDesc')}</BrandDesc>
             <FooterSocials>
