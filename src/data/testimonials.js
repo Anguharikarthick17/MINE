@@ -1,0 +1,50 @@
+export const testimonials = [
+    {
+        id: 1,
+        name: '2024 Phase 1',
+        role: 'Fundamentals Mastery',
+        content: 'Began my journey by mastering HTML5, CSS3, and modern styling. Built my first responsive layouts from scratch.',
+        rating: 5,
+        avatar: '🌱',
+    },
+    {
+        id: 2,
+        name: '2024 Phase 2',
+        role: 'Hackathon Debut',
+        content: 'Participated in TetherX Round 1. Learned the power of collaborative development and building under pressure.',
+        rating: 5,
+        avatar: '🏆',
+    },
+    {
+        id: 3,
+        name: '2025 Phase 1',
+        role: 'React & Frameworks',
+        content: 'Advanced into React and Next.js. Started building complex interactive components and state-managed apps.',
+        rating: 5,
+        avatar: '⚛️',
+    },
+    {
+        id: 4,
+        name: '2025 Phase 2',
+        role: 'Prompt Engineering',
+        content: 'Specialized in Creative AI integration. Mastered using AI tools to accelerate development and solve complex UI problems.',
+        rating: 5,
+        avatar: '🤖',
+    },
+    {
+        id: 5,
+        name: '2026 Phase 1',
+        role: 'Victory at VIT',
+        content: 'National-level Hack-A-Thon participation (TetherX 2026). Showcased high-end creative coding on a massive stage.',
+        rating: 5,
+        avatar: '🥇',
+    },
+    {
+        id: 6,
+        name: 'Future Phase',
+        role: 'Next Frontiers',
+        content: 'Currently exploring backend robustness, scalable architecture, and the intersection of AI and human-centered design.',
+        rating: 5,
+        avatar: '🚀',
+    }
+];

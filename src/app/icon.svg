@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
+  <style>
+    .brand-path {
+      fill: #1A1A2E;
+    }
+    .brace-path {
+      fill: none;
+      stroke: #1A1A2E;
+      stroke-width: 30;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    @media (prefers-color-scheme: dark) {
+      .brand-path {
+        fill: #F0F0FF;
+      }
+      .brace-path {
+        stroke: #F0F0FF;
+      }
+    }
+  </style>
+  
+  <g transform="translate(150, 0) scale(0.6)">
+    <!-- AHK Letters -->
+    <text x="250" y="250" text-anchor="middle" font-family="sans-serif" font-weight="900" font-size="200" class="brand-path">AHK</text>
+  </g>
+
+  <!-- Braces with adjusted viewBox 500x500 -->
+  <path class="brace-path" d="M 120 100 C 80 100, 70 120, 70 180 L 70 210 C 70 240, 50 250, 20 250 C 50 250, 70 260, 70 290 L 70 320 C 70 380, 80 400, 120 400" />
+  <path class="brace-path" d="M 380 100 C 420 100, 430 120, 430 180 L 430 210 C 430 240, 450 250, 480 250 C 450 250, 430 260, 430 290 L 430 320 C 430 380, 420 400, 380 400" />
+</svg>

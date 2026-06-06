@@ -1,0 +1,43 @@
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+.yarn/install-state.gz
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+
+# Large binary assets (avatar frames, raw videos, 3D sources, models)
+/public/avatar_backup/
+/public/avatar/
+/public/videos/
+/public/models/
+/src/assets/
+/myprojects/
+/.history/
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# env files
+.env*.local
+
+# vercel
+.vercel
+
+# IDE
+.vscode/
+.idea/

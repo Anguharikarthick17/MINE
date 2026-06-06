@@ -1,0 +1,30 @@
+export const projects = [
+    {
+        id: 1,
+        title: 'City Issue Management',
+        subtitle: 'Plateforme E-Commerce Principale',
+        description: 'La vitrine principale de LaEcoVida.',
+        tech: ['Next.js', 'React', 'Tailwind', 'Stripe'],
+        category: 'E-Commerce',
+        color: '#10B981',
+        year: '2025',
+        link: 'https://merechauffer-ddc.vercel.app/',
+        github: '#',
+        image: '/projects/laecovida.jpg',
+        video: '/projects/laecovida.mp4',
+    },
+    {
+        id: 2,
+        title: 'AGRI SMART',
+        subtitle: 'Système de Gestion Énergétique',
+        description: 'Plateforme de gestion énergétique.',
+        tech: ['React', 'Node.js', 'PostgreSQL', 'Chart.js'],
+        category: 'SaaS',
+        color: '#6C63FF',
+        year: '2025',
+        link: 'https://enrgestion.vercel.app/',
+        github: '#',
+        image: '/projects/enrgestion.jpg',
+        video: '/projects/enrgestion.mp4',
+    }
+];
