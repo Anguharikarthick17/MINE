@@ -6,29 +6,15 @@ import { lightTheme, darkTheme } from '@/styles/theme';
 const ThemeContext = createContext();
 
 export function ThemeProvider({ children }) {
-    const [isDark, setIsDark] = useState(true);
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
         setMounted(true);
-        const stored = localStorage.getItem('portfolio-theme');
-        if (stored) {
-            setIsDark(stored === 'dark');
-        } else {
-            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            setIsDark(prefersDark);
-        }
     }, []);
 
     const toggleTheme = useCallback(() => {
-        setIsDark(prev => {
-            const newVal = !prev;
-            localStorage.setItem('portfolio-theme', newVal ? 'dark' : 'light');
-            return newVal;
-        });
+        // No-op, dark mode only
     }, []);
-
-    const theme = isDark ? darkTheme : lightTheme;
 
     if (!mounted) {
         return (
@@ -39,8 +25,8 @@ export function ThemeProvider({ children }) {
     }
 
     return (
-        <ThemeContext.Provider value={{ isDark, toggleTheme }}>
-            <StyledThemeProvider theme={theme}>
+        <ThemeContext.Provider value={{ isDark: true, toggleTheme }}>
+            <StyledThemeProvider theme={darkTheme}>
                 {children}
             </StyledThemeProvider>
         </ThemeContext.Provider>

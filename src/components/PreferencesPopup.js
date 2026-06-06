@@ -356,11 +356,9 @@ const Arrow = styled.span`
 `;
 
 export default function PreferencesPopup() {
-  const { isDark, toggleTheme } = useTheme();
   const { locale, setLocale, t } = useLanguage();
   const [show, setShow] = useState(false);
   const [selectedLang, setSelectedLang] = useState(locale);
-  const [selectedDark, setSelectedDark] = useState(isDark);
 
   useEffect(() => {
     const onPreloaderDone = () => {
@@ -383,14 +381,10 @@ export default function PreferencesPopup() {
 
   useEffect(() => {
     setSelectedLang(locale);
-    setSelectedDark(isDark);
-  }, [locale, isDark]);
+  }, [locale]);
 
   const handleContinue = () => {
     setLocale(selectedLang);
-    if (selectedDark !== isDark) {
-      toggleTheme();
-    }
     localStorage.setItem('portfolio-visited', 'true');
     setShow(false);
   };
@@ -428,29 +422,6 @@ export default function PreferencesPopup() {
                 </LangOption>
               ))}
             </LanguageGrid>
-          </Section>
-
-          <Section>
-            <Label>
-              <LabelIcon>🎨</LabelIcon>
-              {t('preferences.theme')}
-            </Label>
-            <ThemeToggleRow>
-              <ThemeOption
-                $active={selectedDark}
-                onClick={() => setSelectedDark(true)}
-              >
-                <ThemePreview $dark>🌙</ThemePreview>
-                <ThemeLabel $active={selectedDark}>{t('preferences.dark')}</ThemeLabel>
-              </ThemeOption>
-              <ThemeOption
-                $active={!selectedDark}
-                onClick={() => setSelectedDark(false)}
-              >
-                <ThemePreview>☀️</ThemePreview>
-                <ThemeLabel $active={!selectedDark}>{t('preferences.light')}</ThemeLabel>
-              </ThemeOption>
-            </ThemeToggleRow>
           </Section>
 
           <ContinueBtn onClick={handleContinue}>

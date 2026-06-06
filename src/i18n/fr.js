@@ -24,6 +24,12 @@ export const fr = {
         viewWork: 'Voir Mes Projets',
         getInTouch: 'Me Contacter',
         scroll: 'défiler',
+        card1Title: 'Éducation',
+        card1Content: "Rathinam Technical Campus\nCoimbatore, Tamil Nadu",
+        card2Title: 'Département',
+        card2Content: "B.E. Informatique\net ingénierie",
+        card3Title: 'À Propos de Moi',
+        card3Content: "Passionné par le développement web, les outils d'IA et la création d'expériences numériques modernes grâce à un apprentissage et une innovation continus.",
     },
 
     about: {

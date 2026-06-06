@@ -125,13 +125,13 @@ const VideoWrapper = styled.div`
   }
 `;
 
-const StyledVideo = styled.video`
+const StyledVideo = styled.iframe`
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  border: none;
   display: block;
   transition: transform 0.5s ease;
-  cursor: pointer;
+  pointer-events: none;
 
   ${Card}:hover & { transform: scale(1.06); }
 `;
@@ -336,8 +336,10 @@ const ModalBox = styled.div`
   border: 1px solid rgba(52, 211, 153, 0.3);
 `;
 
-const ModalVideo = styled.video`
+const ModalVideo = styled.iframe`
   width: 100%;
+  aspect-ratio: 16 / 9;
+  border: none;
   display: block;
   max-height: 85vh;
   background: #000;
@@ -395,7 +397,7 @@ const PROJECTS = [
     category: 'Smart Agriculture Platform',
     description:
       'AgriSmart is an intelligent agriculture solution designed to help farmers make better decisions using technology. The platform focuses on improving productivity, monitoring agricultural activities, and supporting data-driven farming practices.',
-    video: '/videos/agrismart.mp4',
+    youtubeId: 'ea9nXJXycBw',
     tech: ['Next.js', 'React', 'AI/ML', 'Node.js', 'MongoDB', 'IoT'],
   },
   {
@@ -404,7 +406,7 @@ const PROJECTS = [
     category: 'Smart Urban Management System',
     description:
       'Smart City is a modern platform designed to improve urban living through technology. It focuses on city management, resource optimization, digital services, and efficient communication between citizens and authorities.',
-    video: '/videos/smartcity.mp4',
+    youtubeId: 'hfe-vw1lqaY',
     tech: ['React', 'TypeScript', 'REST API', 'PostgreSQL', 'Redis', 'Docker'],
   },
   {
@@ -413,7 +415,7 @@ const PROJECTS = [
     category: 'Road Safety Awareness Platform',
     description:
       'Road Safety is a web-based solution focused on promoting safe driving practices, traffic awareness, and accident prevention through educational resources and interactive features.',
-    video: '/videos/roadsafety.mp4',
+    youtubeId: 'YQria_F7FlU',
     tech: ['HTML5', 'CSS3', 'JavaScript', 'Python', 'Flask', 'Chart.js'],
   },
 ];
@@ -422,13 +424,7 @@ const PROJECTS = [
    VIDEO MODAL COMPONENT
 ═══════════════════════════════════════ */
 function VideoModal({ project, onClose }) {
-  const videoRef = useRef(null);
-
   useEffect(() => {
-    const vid = videoRef.current;
-    if (vid) {
-      vid.play().catch(() => {});
-    }
     document.body.style.overflow = 'hidden';
     const onKey = (e) => { if (e.key === 'Escape') onClose(); };
     window.addEventListener('keydown', onKey);
@@ -448,12 +444,10 @@ function VideoModal({ project, onClose }) {
           </CloseBtn>
         </ModalHeader>
         <ModalVideo
-          ref={videoRef}
-          src={project.video}
-          controls
-          autoPlay
-          playsInline
-          preload="auto"
+          src={`https://www.youtube.com/embed/${project.youtubeId}?autoplay=1&controls=1&rel=0`}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowFullScreen
+          title={`${project.title} Video Demo`}
         />
       </ModalBox>
     </ModalBackdrop>
@@ -464,49 +458,15 @@ function VideoModal({ project, onClose }) {
    PROJECT CARD
 ═══════════════════════════════════════ */
 function ProjectCard({ project, delay, visible, onWatch }) {
-  const videoRef = useRef(null);
-  const wrapperRef = useRef(null);
-
-  /* Play immediately on mount, pause when out of view */
-  useEffect(() => {
-    const vid = videoRef.current;
-    if (!vid) return;
-
-    // Eagerly start loading and playing
-    vid.load();
-    vid.play().catch(() => {});
-
-    const wrapper = wrapperRef.current;
-    if (!wrapper) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          vid.play().catch(() => {});
-        } else {
-          vid.pause();
-        }
-      },
-      { threshold: 0.05 }
-    );
-
-    observer.observe(wrapper);
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <Card $visible={visible} $delay={delay}>
       {/* Thumbnail video — clicking anywhere opens fullscreen modal */}
-      <VideoWrapper ref={wrapperRef} onClick={() => onWatch(project)}>
+      <VideoWrapper onClick={() => onWatch(project)}>
         <CategoryBadge>{project.category}</CategoryBadge>
         <StyledVideo
-          ref={videoRef}
-          src={project.video}
-          muted
-          loop
-          playsInline
-          autoPlay
-          preload="auto"
+          src={`https://www.youtube.com/embed/${project.youtubeId}?autoplay=1&mute=1&loop=1&playlist=${project.youtubeId}&controls=0&showinfo=0&rel=0&iv_load_policy=3&playsinline=1`}
+          allow="autoplay; encrypted-media"
+          title={`${project.title} Preview`}
         />
         <VideoGlow />
         <HoverOverlay>

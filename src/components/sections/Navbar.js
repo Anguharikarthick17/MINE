@@ -355,10 +355,6 @@ export default function Navbar() {
               </LangMenu>
             </LangDropdown>
 
-            <IconBtn onClick={toggleTheme} aria-label="Toggle theme">
-              {isDark ? <FiSun /> : <FiMoon />}
-            </IconBtn>
-
             <ContactBtn href="#contact" onClick={(e) => { e.preventDefault(); handleClick('#contact'); }}>
               {t('nav.letsTalk')}
             </ContactBtn>

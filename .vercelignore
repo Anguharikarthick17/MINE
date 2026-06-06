@@ -1,5 +1,8 @@
-public/avatar/
 public/avatar_backup/
 public/videos/
 public/models/
 src/assets/
+myprojects/
+.history/
+node_modules/
+.next/

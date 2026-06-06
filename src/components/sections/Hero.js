@@ -4,7 +4,8 @@ import dynamic from 'next/dynamic';
 import styled, { keyframes } from 'styled-components';
 import { useLanguage } from '@/context/LanguageContext';
 import useIsMobile from '@/lib/useIsMobile';
-import { FiArrowDown, FiGithub, FiLinkedin, FiInstagram } from 'react-icons/fi';
+import { FiArrowDown, FiGithub, FiLinkedin, FiInstagram, FiCode, FiUser } from 'react-icons/fi';
+import { FaGraduationCap } from 'react-icons/fa';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -700,6 +701,97 @@ const ScrollText = styled.span`
   font-weight: 500;
 `;
 
+/* ── Info Cards ── */
+const InfoCardsContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+  width: 100%;
+  max-width: 680px;
+  opacity: 0;
+  animation: ${slideUp} 0.8s ease forwards;
+  animation-delay: 1.1s;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 600px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    max-width: 450px;
+  }
+`;
+
+const InfoCard = styled.div`
+  background: ${({ theme }) => theme.colors.glass};
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid ${({ theme }) => theme.colors.glassBorder};
+  border-radius: 16px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+
+  &:hover {
+    transform: translateY(-6px);
+    border-color: ${({ theme }) => theme.colors.accent};
+    box-shadow: 0 8px 30px ${({ theme }) => theme.colors.accentGlow};
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    align-items: center;
+    text-align: center;
+  }
+`;
+
+const CardIconWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: ${({ theme }) => theme.colors.accentGlow};
+  color: ${({ theme }) => theme.colors.accent};
+  font-size: 1.35rem;
+  margin-bottom: 0.85rem;
+  border: 1px solid ${({ theme }) => theme.colors.accent}20;
+  transition: all 0.3s ease;
+
+  ${InfoCard}:hover & {
+    transform: scale(1.1) rotate(5deg);
+    background: ${({ theme }) => theme.colors.accent};
+    color: #0A0A1A;
+    box-shadow: 0 0 15px ${({ theme }) => theme.colors.accent};
+  }
+`;
+
+const CardTitle = styled.h3`
+  font-family: ${({ theme }) => theme.fonts.heading};
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: ${({ theme }) => theme.colors.text};
+  margin: 0 0 0.5rem 0;
+  letter-spacing: 0.5px;
+`;
+
+const CardContent = styled.p`
+  font-family: ${({ theme }) => theme.fonts.body};
+  font-size: 0.825rem;
+  color: ${({ theme }) => theme.colors.textSecondary};
+  line-height: 1.5;
+  margin: 0;
+  white-space: pre-line;
+`;
+
 /* ══════════════════════════════════════════
    COMPONENT
    ══════════════════════════════════════════ */
@@ -1385,11 +1477,31 @@ export default function Hero() {
             <RoleText>Creative Web Developer</RoleText>
           </RoleWrapper>
 
-          <Subtitle>
-            {t('hero.subtitle')}{' '}
-            <strong>{t('hero.subtitleHighlight')}</strong>{' '}
-            {t('hero.subtitleEnd')}
-          </Subtitle>
+          <InfoCardsContainer>
+            <InfoCard>
+              <CardIconWrapper>
+                <FaGraduationCap />
+              </CardIconWrapper>
+              <CardTitle>{t('hero.card1Title')}</CardTitle>
+              <CardContent>{t('hero.card1Content')}</CardContent>
+            </InfoCard>
+
+            <InfoCard>
+              <CardIconWrapper>
+                <FiCode />
+              </CardIconWrapper>
+              <CardTitle>{t('hero.card2Title')}</CardTitle>
+              <CardContent>{t('hero.card2Content')}</CardContent>
+            </InfoCard>
+
+            <InfoCard>
+              <CardIconWrapper>
+                <FiUser />
+              </CardIconWrapper>
+              <CardTitle>{t('hero.card3Title')}</CardTitle>
+              <CardContent>{t('hero.card3Content')}</CardContent>
+            </InfoCard>
+          </InfoCardsContainer>
 
           <HeroActions>
             <PrimaryBtn

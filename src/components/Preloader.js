@@ -233,10 +233,8 @@ export default function Preloader() {
             <g clipPath="url(#reveal-mask)">
               <g transform="translate(830, 540)">
                 <g className="text-slide-anim" style={{ direction: 'ltr' }}>
-                  <text className="text-name" x="0" y="10" textAnchor="start">
-                    AHK
-                  </text>
-                  <text className="text-title" x="5" y="65" textAnchor="start">
+                  <image href="/ahk-logo.png" x="-15" y="-50" width="200" height="69" style={{ mixBlendMode: 'screen' }} />
+                  <text className="text-title" x="5" y="45" textAnchor="start">
                     {language === 'ar' ? 'مطور ويب مبدع' : language === 'fr' ? 'DÉVELOPPEUR WEB CRÉATIF' : 'CREATIVE WEB DEVELOPER'}
                   </text>
                 </g>
